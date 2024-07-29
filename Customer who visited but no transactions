@@ -1,0 +1,9 @@
+#Question:
+https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/?envType=study-plan-v2&envId=top-sql-50
+
+#Solution:
+SELECT v.customer_id,COUNT(v.visit_id) AS count_no_trans
+FROM Visits v
+LEFT JOIN Transactions t USING(visit_id)
+WHERE t.transaction_id IS NULL
+GROUP BY v.customer_id;
