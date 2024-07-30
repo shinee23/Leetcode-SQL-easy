@@ -1,7 +1,7 @@
-#Question:
+--Question:
 https://leetcode.com/problems/article-views-i/?envType=study-plan-v2&envId=top-sql-50
 
-#Solution:
+--Solution:
 SELECT  DISTINCT AUTHOR_ID AS ID
 FROM VIEWS
 WHERE AUTHOR_ID = VIEWER_ID 
