@@ -1,0 +1,10 @@
+--Question
+https://leetcode.com/problems/queries-quality-and-percentage/?envType=study-plan-v2&envId=top-sql-50
+
+--Solution
+SELECT query_name, 
+       ROUND(SUM(rating/position)/COUNT(query_name),2) AS quality,
+        ROUND((SUM(CASE WHEN rating < 3 THEN 1 ELSE 0 END) / COUNT(query_name)) * 100, 2) AS poor_query_percentage
+FROM queries
+WHERE query_name IS NOT NULL
+GROUP BY query_name
