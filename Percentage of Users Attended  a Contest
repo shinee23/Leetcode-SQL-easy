@@ -1,9 +1,14 @@
-#Question:
+--Question:
 https://leetcode.com/problems/percentage-of-users-attended-a-contest/?envType=study-plan-v2&envId=top-sql-50
 
-#Solution:
+--Solution:
 SELECT r.contest_id , ROUND((COUNT(r.contest_id)/(SELECT COUNT(user_id) FROM Users)*100),2)AS percentage
 FROM Users u
 JOIN Register r USING(user_id)
 GROUP BY contest_id
 ORDER BY percentage DESC, contest_id ASC
+
+-- When we don't use nested select clause and instead just use COUNT(u.user_id).
+-- We get incorrect answer. This is because, when used within the same grouping context as COUNT(r.contest_id), 
+   it does not give the total number of users but instead counts the number of users associated with each contest registration. 
+   This results in an incorrect denominator for the percentage calculation.
