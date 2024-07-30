@@ -1,0 +1,13 @@
+#Question:
+https://leetcode.com/problems/average-time-of-process-per-machine/?envType=study-plan-v2&envId=top-sql-50
+
+#Solution:
+SELECT a.machine_id, ROUND(AVG(b.timestamp - a.timestamp),3) AS processing_time
+FROM Activity a JOIN Activity b
+ON a.machine_id = b.machine_id 
+   AND a.process_id = b.process_id 
+   AND a.activity_type = 'start'
+   AND b.activity_type = 'end'
+GROUP BY 1;
+
+-- Group by 1 means group by machine_id in this context
